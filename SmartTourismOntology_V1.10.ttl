@@ -1,0 +1,641 @@
+@prefix : <http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://www.smartutourismontology.com#dct:> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix www: <http://www.smartutourismontology.com#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix vann: <http://www.smartutourismontology.com#vann:> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@base <http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/> .
+
+<http://www.smartutourismontology.com#> rdf:type owl:Ontology ;
+                                         dc:creator "Juan Fernando Lopez Duran" ;
+                                         dc:description "An ontology for modeling tourism-related data such as cities, hotels, restaurants, events, transports and more." ;
+                                         dc:license <https://creativecommons.org/licenses/by/4.0/%20> ;
+                                         dc:subject "Tourism, Recommender Systems, Smart Cities, OWL Ontology" ;
+                                         dc:title "Smart Tourism Ontology" ;
+                                         dct:ontology_name "Smart Tourism Ontology" ;
+                                         vann:preferredNamespacePrefix "sto" ;
+                                         rdfs:label "Smart Tourism Ontology" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/description
+dc:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/license
+dc:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/subject
+dc:subject rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+swrla:isRuleEnabled rdf:type owl:AnnotationProperty .
+
+
+###  http://www.smartutourismontology.com#dct:ontology_name
+dct:ontology_name rdf:type owl:AnnotationProperty .
+
+
+###  http://www.smartutourismontology.com#vann:preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2002/07/owl#sameAs
+owl:sameAs rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/locatedIn
+:locatedIn rdf:type owl:ObjectProperty ;
+           rdfs:domain :Restaurant ;
+           rdfs:range :City ;
+           rdfs:comment "Specifies that a place or service is located within a particular city." ;
+           rdfs:label "Located In" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/offersTransport
+:offersTransport rdf:type owl:ObjectProperty ;
+                 rdfs:domain :City ;
+                 rdfs:range :Transport ;
+                 rdfs:comment "Indicates the type of transport service offered by the city." ;
+                 rdfs:label "Offers Transport" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/Stars
+:Stars rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Hotel ;
+       rdfs:range xsd:integer ;
+       rdfs:comment "The number of stars rating of the hotel." ;
+       rdfs:label "Stars" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/attractionName
+:attractionName rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Attraction ;
+                rdfs:range xsd:string ;
+                rdfs:comment "This is the name of the attraction" ;
+                rdfs:label "Attraction Name" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/attractionType
+:attractionType rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Attraction ;
+                rdfs:range xsd:string ;
+                rdfs:comment "Describe what kind of atraccion is" ;
+                rdfs:label "Attraction Type" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/cityName
+:cityName rdf:type owl:DatatypeProperty ;
+          rdfs:domain :City ;
+          rdfs:range xsd:string ;
+          rdfs:comment "The name of the city." ;
+          rdfs:label "City Name" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/cuisineType
+:cuisineType rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Restaurant ;
+             rdfs:range xsd:string ;
+             rdfs:comment "Indicates the type of food offered." ;
+             rdfs:label "Cuisine Type" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/eventName
+:eventName rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Event ;
+           rdfs:range xsd:string ;
+           rdfs:comment "This is the name of the event" ;
+           rdfs:label "Event Name" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/eventType
+:eventType rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Event ;
+           rdfs:range xsd:string ;
+           rdfs:comment "This is the type of event, like music, sport or gastronomic" ;
+           rdfs:label "Event Type" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/hotelName
+:hotelName rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Hotel ;
+           rdfs:range xsd:string ;
+           rdfs:comment "The name of the hotel." ;
+           rdfs:label "Hotel Name" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/hotelType
+:hotelType rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Hotel ;
+           rdfs:range xsd:string ;
+           rdfs:comment "Description of the type of hotel, like bussiness, turistic or beach" ;
+           rdfs:label "Hotel Type" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/pricePerNight
+:pricePerNight rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Hotel ;
+               rdfs:range xsd:float ;
+               rdfs:comment "Indicates the price of a night in a hotel" ;
+               rdfs:label "Price Per Night" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/rating
+:rating rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Restaurant ;
+        rdfs:range xsd:float ;
+        rdfs:comment "Indicates the user or critic rating of  a restaurant." ;
+        rdfs:label "Rating" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/restaurantName
+:restaurantName rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Restaurant ;
+                rdfs:range xsd:string ;
+                rdfs:comment "This is the name of the restaurant" ;
+                rdfs:label "Restaurant Name" .
+
+
+###  http://www.smartutourismontology.com#attractionRating
+www:attractionRating rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :Attraction ;
+                     rdfs:range xsd:float ;
+                     rdfs:comment "Indicates the user or critic rating of  an attraction." ;
+                     rdfs:label "Attraction Rating" .
+
+
+###  http://www.smartutourismontology.com#hotelRating
+www:hotelRating rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Hotel ;
+                rdfs:range xsd:float ;
+                rdfs:comment "Indicates the user or critic rating of  a hotel." ;
+                rdfs:label "Hotel Rating" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/Attraction
+:Attraction rdf:type owl:Class ;
+            rdfs:comment "Represents a tourist attraction, such as museums, parks or monuments within a city." ;
+            rdfs:label "Attraction" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/BrazilianSteakhouse
+:BrazilianSteakhouse rdf:type owl:Class ;
+                     rdfs:subClassOf :Restaurant ;
+                     rdfs:comment "A restaurant specializing in traditional Brazilian grilled meats." ;
+                     rdfs:label "Brazilian Steakhouse" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/BusService
+:BusService rdf:type owl:Class ;
+            rdfs:subClassOf :Transport ;
+            rdfs:comment "A transportation service using buses to move passengers within or between cities." ;
+            rdfs:label "Bus Service" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/City
+:City rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/ColombianCuisineRestaurant
+:ColombianCuisineRestaurant rdf:type owl:Class ;
+                            rdfs:subClassOf :Restaurant ;
+                            rdfs:comment "A restaurant offering traditional Colombian food." ;
+                            rdfs:label "Colombian Cuisine Restaurant" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/Concert
+:Concert rdf:type owl:Class ;
+         rdfs:subClassOf :Event ;
+         rdfs:comment "A live music performance event." ;
+         rdfs:label "Concert" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/CruiseService
+:CruiseService rdf:type owl:Class ;
+               rdfs:subClassOf :Transport ;
+               rdfs:comment "A transportation service offering trips by boat or ship, often for leisure." ;
+               rdfs:label "Cruise Service" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/Event
+:Event rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/Festival
+:Festival rdf:type owl:Class ;
+          rdfs:subClassOf :Event ;
+          rdfs:comment "A series of cultural performances or celebrations organized around a theme." ;
+          rdfs:label "Festival" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/Hotel
+:Hotel rdf:type owl:Class ;
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :Stars ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onDataRange xsd:integer
+                       ] .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/LuxuryHotel
+:LuxuryHotel rdf:type owl:Class ;
+             rdfs:subClassOf :Hotel ;
+             rdfs:comment "A high-end hotel offering premium amenities and services." ;
+             rdfs:label "Luxury Hotel" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/Marathon
+:Marathon rdf:type owl:Class ;
+          rdfs:subClassOf :Event ;
+          rdfs:comment "A long-distance running race organized as a public event." ;
+          rdfs:label "Marathon" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/MetroService
+:MetroService rdf:type owl:Class ;
+              rdfs:subClassOf :Transport ;
+              rdfs:comment "An urban underground train transportation system." ;
+              rdfs:label "Metro Service" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/Museum
+:Museum rdf:type owl:Class ;
+        rdfs:subClassOf :Attraction ;
+        rdfs:comment "An attraction dedicated to preserving and displaying cultural, historical, or scientific objects." ;
+        rdfs:label "Museum" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/Park
+:Park rdf:type owl:Class ;
+      rdfs:subClassOf :Attraction ;
+      rdfs:comment "A public green area for recreation and leisure activities." ;
+      rdfs:label "Park" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/PlantBasedCuisineRestaurant
+:PlantBasedCuisineRestaurant rdf:type owl:Class ;
+                             rdfs:subClassOf :Restaurant ;
+                             rdfs:comment "A restaurant specialized in plant-based or vegetarian food." ;
+                             rdfs:label "Plant Based Cuisine Restaurant" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/Restaurant
+:Restaurant rdf:type owl:Class ;
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty :cuisineType ;
+                              owl:someValuesFrom xsd:string
+                            ] .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/TaxiService
+:TaxiService rdf:type owl:Class ;
+             rdfs:subClassOf :Transport ;
+             rdfs:comment "A transport service offering individual rides in cars for passengers." ;
+             rdfs:label "Taxi Service" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/ThemePark
+:ThemePark rdf:type owl:Class ;
+           rdfs:subClassOf :Attraction ;
+           rdfs:comment "An attraction with rides and entertainment based on specific themes." ;
+           rdfs:label "Theme Park" .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/Transport
+:Transport rdf:type owl:Class ;
+           rdfs:comment "Represents a transportation service that operates in a city to move tourists or residents." ;
+           rdfs:label "Transport" .
+
+
+###  http://www.smartutourismontology.com#JapaneseCuisineRestaurant
+www:JapaneseCuisineRestaurant rdf:type owl:Class ;
+                              rdfs:subClassOf :Restaurant ;
+                              rdfs:comment "A restaurant offering traditional Japanese food." ;
+                              rdfs:label "JapaneseCuisineRestaurant" .
+
+
+###  http://www.smartutourismontology.com#TopRatedRestaurants
+www:TopRatedRestaurants rdf:type owl:Class ;
+                        rdfs:subClassOf :Restaurant ;
+                        rdfs:comment "Restaurants with a rating over 4.5" ;
+                        rdfs:label "TopRatedRestaurants" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://dbpedia.org/ontology/City
+<http://dbpedia.org/ontology/City> rdf:type owl:NamedIndividual ;
+                                   owl:sameAs :City .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/City
+:City rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/ontology/Event
+<http://dbpedia.org/ontology/Event> rdf:type owl:NamedIndividual ;
+                                    owl:sameAs :Event .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/Event
+:Event rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/ontology/Hotel
+<http://dbpedia.org/ontology/Hotel> rdf:type owl:NamedIndividual ;
+                                    owl:sameAs :Hotel .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/Hotel
+:Hotel rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/ontology/Restaurant
+<http://dbpedia.org/ontology/Restaurant> rdf:type owl:NamedIndividual ;
+                                         owl:sameAs :Restaurant .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/Restaurant
+:Restaurant rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/City
+:City rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/Event
+:Event rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/Hotel
+:Hotel rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/juan.lopez/ontologies/2025/3/untitled-ontology-11/Restaurant
+:Restaurant rdf:type owl:NamedIndividual .
+
+
+###  http://www.smartutourismontology.com#FeriaDeMalaga
+www:FeriaDeMalaga rdf:type owl:NamedIndividual ,
+                           :Festival ;
+                  :eventName "Feria De Malaga" ;
+                  :eventType "Musica" ;
+                  rdfs:comment "This event is a music event in the malaga city in Spain" ;
+                  rdfs:label "Feria De Malaga" .
+
+
+###  http://www.smartutourismontology.com#HotelRoyalMalaga
+www:HotelRoyalMalaga rdf:type owl:NamedIndividual ,
+                              :Hotel ;
+                     :Stars 5 ;
+                     :hotelName "Hotel Royal Malaga" ;
+                     :hotelType "Turistico" ;
+                     :pricePerNight "175.0"^^xsd:float ;
+                     www:hotelRating "4.6"^^xsd:float ;
+                     rdfs:comment "Tourist hotel located in the city Malaga in Spain" ;
+                     rdfs:label "Hotel Royal Malaga" .
+
+
+###  http://www.smartutourismontology.com#Malaga
+www:Malaga rdf:type owl:NamedIndividual ,
+                    :City ;
+           :cityName "Malaga" ;
+           rdfs:comment "City located in the south of Spain, known for its beaches and cultural heritage." ;
+           rdfs:label "Malaga" .
+
+
+###  http://www.smartutourismontology.com#MuseoMalaga
+www:MuseoMalaga rdf:type owl:NamedIndividual ,
+                         :Museum ;
+                :attractionName "Museo Malaga" ;
+                :attractionType "Museum" ;
+                www:attractionRating "4.3"^^xsd:float ;
+                rdfs:comment "A museum locate in the city Malaga in Spain" ;
+                rdfs:label "Museo Malaga" .
+
+
+###  http://www.smartutourismontology.com#RestauranteDeliciaMalaga
+www:RestauranteDeliciaMalaga rdf:type owl:NamedIndividual ,
+                                      :Restaurant ;
+                             :cuisineType "Japanese" ;
+                             :rating "4.9"^^xsd:float ;
+                             :restaurantName "Restaurante Delicia Malaga" ;
+                             rdfs:comment "Restaurant of japanese food located in Malaga" ;
+                             rdfs:label "Restaurante Delicia Malaga" .
+
+
+###  http://www.smartutourismontology.com#RestauranteGourmetMalaga
+www:RestauranteGourmetMalaga rdf:type owl:NamedIndividual ,
+                                      :Restaurant ;
+                             :cuisineType "Japanese" ;
+                             :rating "4.7"^^xsd:float ;
+                             :restaurantName "Restaurante Gourmet Malaga" ;
+                             rdfs:comment "Restaurant of japanese food located in Malaga" ;
+                             rdfs:label "Restaurante Gourmet Malaga" .
+
+
+###  http://www.smartutourismontology.com#RestauranteSaborMalaga
+www:RestauranteSaborMalaga rdf:type owl:NamedIndividual ,
+                                    :Restaurant ;
+                           :cuisineType "Italian" ;
+                           :rating "3.8"^^xsd:float ;
+                           :restaurantName "Restaurante Sabaor Malaga" ;
+                           rdfs:comment "Restaurant of italian food located in Malaga" ;
+                           rdfs:label "Restaurante Sabor Malaga" .
+
+
+###  http://www.smartutourismontology.com#RestauranteTradicionMalaga
+www:RestauranteTradicionMalaga rdf:type owl:NamedIndividual ,
+                                        :Restaurant ;
+                               :cuisineType "Japanese" ;
+                               :rating "4.1"^^xsd:float ;
+                               :restaurantName "Restaurante Tradicion Malaga" ;
+                               rdfs:comment "Restaurant of japanese food located in Malaga" ;
+                               rdfs:label "Restaurante Tradicion Malaga" .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+:City rdfs:comment "Represents a city where tourism activities take place." ;
+      rdfs:label "City" .
+
+
+:Event rdfs:comment "Represents an event held in a city that may attract tourism, such as concerts, festivals, or exhibitions." ;
+       rdfs:label "Event" .
+
+
+:Hotel rdfs:comment "Represents a hotel available for accommodation in a city." ;
+       rdfs:label "Hotel" .
+
+
+:Restaurant rdfs:comment "Represents a food establishment offering dining services in a city." ;
+            rdfs:label "Restaurant" .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+:h rdf:type swrl:Variable .
+
+:s rdf:type swrl:Variable .
+
+:r rdf:type swrl:Variable .
+
+:type rdf:type swrl:Variable .
+
+:val rdf:type swrl:Variable .
+
+[ swrla:isRuleEnabled "true"^^xsd:boolean ;
+   rdfs:comment "This rule will separate the japan restaurants in one new class" ;
+   rdfs:label "JapaneseFoodRule" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :Restaurant ;
+                           swrl:argument1 :r
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                      swrl:propertyPredicate :cuisineType ;
+                                      swrl:argument1 :r ;
+                                      swrl:argument2 :type
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:BuiltinAtom ;
+                                                 swrl:builtin swrlb:stringEqualIgnoreCase ;
+                                                 swrl:arguments [ rdf:type rdf:List ;
+                                                                  rdf:first :type ;
+                                                                  rdf:rest [ rdf:type rdf:List ;
+                                                                             rdf:first "Japanese" ;
+                                                                             rdf:rest rdf:nil
+                                                                           ]
+                                                                ]
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate www:JapaneseCuisineRestaurant ;
+                           swrl:argument1 :r
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ swrla:isRuleEnabled "true"^^xsd:boolean ;
+   rdfs:comment "This rule checks the rating of the restaurants and the restaurant ratig above 4.5 will be a top" ;
+   rdfs:label "TopRestaurantsRule" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :Restaurant ;
+                           swrl:argument1 :r
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                      swrl:propertyPredicate :rating ;
+                                      swrl:argument1 :r ;
+                                      swrl:argument2 :val
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:BuiltinAtom ;
+                                                 swrl:builtin swrlb:greaterThan ;
+                                                 swrl:arguments [ rdf:type rdf:List ;
+                                                                  rdf:first :val ;
+                                                                  rdf:rest [ rdf:type rdf:List ;
+                                                                             rdf:first 4.5 ;
+                                                                             rdf:rest rdf:nil
+                                                                           ]
+                                                                ]
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate www:TopRatedRestaurants ;
+                           swrl:argument1 :r
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ swrla:isRuleEnabled "true"^^xsd:boolean ;
+   rdfs:comment "This rule checks how many stars has a hotel and if the hotel has more than 4 stars, this hotel is a luxury hotel" ;
+   rdfs:label "LuxuryHotelRule" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :Hotel ;
+                           swrl:argument1 :h
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                      swrl:propertyPredicate :Stars ;
+                                      swrl:argument1 :h ;
+                                      swrl:argument2 :s
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:BuiltinAtom ;
+                                                 swrl:builtin swrlb:greaterThan ;
+                                                 swrl:arguments [ rdf:type rdf:List ;
+                                                                  rdf:first :s ;
+                                                                  rdf:rest [ rdf:type rdf:List ;
+                                                                             rdf:first 4 ;
+                                                                             rdf:rest rdf:nil
+                                                                           ]
+                                                                ]
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :LuxuryHotel ;
+                           swrl:argument1 :h
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
